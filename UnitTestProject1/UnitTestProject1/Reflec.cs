@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Utils.Reflect
+namespace Reflection
 {
     public class Reflection<T>
     {
@@ -21,10 +21,9 @@ namespace Utils.Reflect
         /// <returns>The Property value from the object.</returns>
         internal static T GetInstanceProperty(object instance, string propertyName)
         {
-            var bindFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic
-                | BindingFlags.Static;
+            var bindFlags = GetBinding();
             var field = instance.GetType().GetProperty(propertyName, bindFlags);
-            return (T)field.GetValue(instance);
+            return (T)field.GetValue(instance, null);
         }
 
         /// <summary>
@@ -38,10 +37,18 @@ namespace Utils.Reflect
         /// <returns>The field value from the object.</returns>
         internal static T GetInstanceField(object instance, string fieldName)
         {
+            var bindFlags = GetBinding();
+            var type = instance.GetType();
+            var field = type.GetField(fieldName, bindFlags);
+            return (T)field.GetValue(instance);
+        }
+
+
+        private static BindingFlags GetBinding()
+        {
             var bindFlags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic
                 | BindingFlags.Static;
-            var field = instance.GetType().GetField(fieldName, bindFlags);
-            return (T)field.GetValue(instance);
+            return bindFlags;
         }
 
         /// <summary>
