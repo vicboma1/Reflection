@@ -1,4 +1,5 @@
 # Reflection
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/vicboma1/reflection/trend.png)](https://bitdeli.com/free "Bitdeli Badge")[![Analytics](https://ga-beacon.appspot.com/UA-68658653-1/injector/readme)](https://github.com/igrigorik/ga-beacon)
 
 ##Instance
 ```c#
@@ -25,6 +26,4 @@ internal static T GetInstanceField(object instance, string fieldName)
 ![](http://i.imgur.com/I9KcngV.png?1)
 
 
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/vicboma1/reflection/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
